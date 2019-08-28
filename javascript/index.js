@@ -3,14 +3,10 @@ function $(id) {
 }
 
 dragula([$('drag-elements'), $('drop-target')], {
-  revertOnSpill: true
-}).on('drop', function(el) {
-  if ($('drop-target').children.length > 0) {
-
-
-    $('display').innerHTML = $('drop-target').innerHTML;
-  } else {
-    $('display').innerHTML = "Display";
+  copy: function (el, source) {
+    return source === $('drag-elements');
+  },
+  accepts: function (el, target) {
+    return target !== $('drag-elements');
   }
-
 });
